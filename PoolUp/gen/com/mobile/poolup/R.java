@@ -24,16 +24,20 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_settings=0x7f08000a;
+        public static final int action_settings=0x7f08000e;
         public static final int bCreatAccount=0x7f080003;
         public static final int bCreateDone=0x7f080007;
         public static final int bLoginButton=0x7f080002;
+        public static final int bSendEmail=0x7f08000c;
+        public static final int etMessageBody=0x7f08000b;
         public static final int etSetName=0x7f080008;
         public static final int etSetPasswordTxt=0x7f080006;
         public static final int etSetUserNameTxt=0x7f080005;
+        public static final int etSubject=0x7f08000a;
+        public static final int etToEmail=0x7f080009;
         public static final int pager=0x7f080004;
         public static final int passwordText=0x7f080001;
-        public static final int tvUserName=0x7f080009;
+        public static final int tvUserName=0x7f08000d;
         public static final int usernameText=0x7f080000;
     }
     public static final class layout {

@@ -3,14 +3,48 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#fa6a6a" >
-     
-    <TextView android:layout_width="fill_parent"
+     >
+
+    <EditText
+        android:id="@+id/etToEmail"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Design Top Rated Screen"
-        android:textSize="20dp"
-        android:layout_centerInParent="true"/>
-     
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="39dp"
+        android:ems="10"
+        android:hint="To-"
+        android:inputType="textEmailAddress" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/etSubject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etToEmail"
+        android:layout_below="@+id/etToEmail"
+        android:layout_marginTop="54dp"
+        android:ems="10"
+        android:hint="Subject" />
+
+    <EditText
+        android:id="@+id/etMessageBody"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etSubject"
+        android:layout_centerVertical="true"
+        android:ems="10"
+        android:hint="Message" />
+
+    <Button
+        android:id="@+id/bSendEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/etMessageBody"
+        android:layout_below="@+id/etMessageBody"
+        android:layout_marginTop="53dp"
+        android:text="Send!" />
  
 </RelativeLayout>

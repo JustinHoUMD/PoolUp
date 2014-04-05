@@ -27,11 +27,14 @@ public class MainActivity extends Activity implements OnClickListener {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		mainref = new Firebase("https://sizzling-fire-7279.firebaseio.com/");
+		users = mainref.child("users");
+		checkIfLoggedIn();
+		
+		
 		setContentView(R.layout.activity_main);		
 		initViews();
-		
-		checkIfLoggedIn();
-
 	}
 
 	private void checkIfLoggedIn() {
@@ -52,9 +55,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		
 	}
 
-	private void initViews() {
-		mainref = new Firebase("https://sizzling-fire-7279.firebaseio.com/");
-		users = mainref.child("users");
+	private void initViews() {		
 
 		etUser = (EditText) findViewById(R.id.usernameText);
 		etPass = (EditText) findViewById(R.id.passwordText);
