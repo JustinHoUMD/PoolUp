@@ -1,0 +1,21 @@
+package com.mobile.poolup;
+
+import android.app.ActionBar;
+import android.app.Activity;
+import android.app.ActionBar.Tab;
+import android.os.Bundle;
+
+public class TripActivity extends Activity {
+	@Override
+    protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState); 
+		setContentView(R.layout.activity_trip); 
+		
+		ActionBar myActionBar = getActionBar(); 
+		myActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+		Tab tab1 = myActionBar.newTab(); 
+		tab1.setText("Create Trip"); 
+		myActionBar.addTab(tab1); 
+	
+	}
+}
