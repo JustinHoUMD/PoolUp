@@ -12,7 +12,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="144dp"
         android:ems="10"
-        android:hint="@string/Username"
+        android:hint="@string/Email"
         android:inputType="textPersonName" />     
    
 

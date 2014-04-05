@@ -20,7 +20,8 @@ public class CreateAccount extends Activity implements OnClickListener {
 	private EditText etName, etUserName, etPassword;
 	private Button doneButton;
 	private Firebase mainref, users;
-
+	private String name,email,password; 
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -52,10 +53,10 @@ public class CreateAccount extends Activity implements OnClickListener {
 
 	private void createAccount() {
 
-		String name = etName.getText().toString();
-		String password = etPassword.getText().toString();
-		String email = etUserName.getText().toString();
-		users.child(parseEmail(email)).child("Name").setValue(name);
+		name = etName.getText().toString();
+		password = etPassword.getText().toString();
+		email = etUserName.getText().toString();
+		
 		
 
 		SimpleLogin authClient = new SimpleLogin(mainref,
@@ -74,6 +75,7 @@ public class CreateAccount extends Activity implements OnClickListener {
 									duration);
 							toast.show();							
 						} else {
+							users.child(parseEmail(email)).child("Name").setValue(name);
 							Intent returnIntent = new Intent();
 							setResult(RESULT_OK, returnIntent);
 							finish();
