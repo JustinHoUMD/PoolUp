@@ -9,7 +9,7 @@
     tools:context=".MainActivity" >
 
     <EditText
-        android:id="@+id/usernameText"
+        android:id="@+id/editText1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -23,23 +23,14 @@
     </EditText>
 
     <EditText
-        android:id="@+id/passwordText"
+        android:id="@+id/editText2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/usernameText"
-        android:layout_centerVertical="true"
+        android:layout_below="@+id/editText1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="38dp"
         android:ems="10"
         android:hint="@string/Password"
         android:inputType="textPassword" />
-
-    <Button
-        android:id="@+id/loginButton"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/usernameText"
-        android:layout_below="@+id/passwordText"
-        android:layout_marginTop="16dp"
-        android:text="@string/Login" />
 
 </RelativeLayout>
