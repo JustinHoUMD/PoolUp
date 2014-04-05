@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+    
+    <EditText
+        android:id="@+id/etSetUserNameTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="144dp"
+        android:ems="10"
+        android:hint="@string/Username"
+        android:inputType="textPersonName" />     
+   
+
+    <EditText
+        android:id="@+id/etSetPasswordTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etSetUserNameTxt"
+        android:layout_centerVertical="true"
+        android:ems="10"
+        android:hint="@string/Password"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/bCreateDone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etSetPasswordTxt"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/etSetPasswordTxt"
+        android:layout_marginBottom="37dp"
+        android:text="Done" />
+
+    <EditText
+        android:id="@+id/etSetName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/etSetUserNameTxt"
+        android:layout_alignLeft="@+id/etSetUserNameTxt"
+        android:layout_marginBottom="70dp"
+        android:ems="10"
+        android:hint="Full Name"
+        android:inputType="textPersonName" >
+
+        <requestFocus />
+    </EditText>
+
+</RelativeLayout>

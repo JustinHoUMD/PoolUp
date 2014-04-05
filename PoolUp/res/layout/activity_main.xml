@@ -33,13 +33,23 @@
         android:inputType="textPassword" />
 
     <Button
-        android:id="@+id/loginButton"
-        style="?android:attr/buttonStyleSmall"
+        android:id="@+id/bLoginButton"        
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/passwordText"
         android:layout_alignRight="@+id/usernameText"
         android:layout_below="@+id/passwordText"
         android:layout_marginTop="16dp"
         android:text="@string/Login" />
+
+    <Button
+        android:id="@+id/bCreatAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/bLoginButton"
+        android:layout_alignRight="@+id/bLoginButton"
+        android:layout_below="@+id/bLoginButton"
+        android:layout_marginTop="19dp"
+        android:text="@string/CreateAccount" />
 
 </RelativeLayout>

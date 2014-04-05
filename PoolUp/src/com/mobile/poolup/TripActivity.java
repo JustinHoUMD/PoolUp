@@ -21,15 +21,17 @@ public class TripActivity extends FragmentActivity implements ActionBar.TabListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_trip);
  
         // Initilization
         viewPager = (ViewPager) findViewById(R.id.pager);
         actionBar = getActionBar();
+        actionBar.setDisplayShowTitleEnabled(false);
+        
         mAdapter = new TabsPagerAdapter(getSupportFragmentManager());
  
         viewPager.setAdapter(mAdapter);
-        actionBar.setHomeButtonEnabled(false);
+        //actionBar.setHomeButtonEnabled(false);
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);        
  
         // Adding Tabs
@@ -37,7 +39,29 @@ public class TripActivity extends FragmentActivity implements ActionBar.TabListe
             actionBar.addTab(actionBar.newTab().setText(tab_name)
                     .setTabListener(this));
         }
-    }
+        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener(){
+
+    		@Override
+    		public void onPageScrollStateChanged(int arg0) {
+    			// TODO Auto-generated method stub
+    			
+    		}
+
+    		@Override
+    		public void onPageScrolled(int arg0, float arg1, int arg2) {
+    			// TODO Auto-generated method stub
+    			
+    		}
+
+    		@Override
+    		public void onPageSelected(int position) {
+    			// TODO Auto-generated method stub
+    			actionBar.setSelectedNavigationItem(position); 
+    		}
+    		
+    });
+    	}
+    
 
 	@Override
 	public void onTabReselected(Tab tab, FragmentTransaction ft) {
@@ -47,7 +71,7 @@ public class TripActivity extends FragmentActivity implements ActionBar.TabListe
 
 	@Override
 	public void onTabSelected(Tab tab, FragmentTransaction ft) {
-		// TODO Auto-generated method stub
+		viewPager.setCurrentItem(tab.getPosition());
 		
 	}
 
@@ -56,4 +80,5 @@ public class TripActivity extends FragmentActivity implements ActionBar.TabListe
 		// TODO Auto-generated method stub
 		
 	}
+	
 }
