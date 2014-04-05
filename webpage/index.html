@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<head>
+  <script type='text/javascript' src='https://cdn.firebase.com/js/client/1.0.11/firebase.js'></script>
+
+		<script type='text/javascript'>
+
+		function b()
+		{
+			var name = document.getElementById('name').value;
+			var street_address = document.getElementById('street_address').value;
+			var zip = document.getElementById('zip').value;
+			var state = document.getElementById('state').value;
+			var phone = document.getElementById('phone').value;
+			
+			//document.body.innerHTML = '';
+			
+			var myRootRef = new Firebase("https://popping-fire-6264.firebaseio.com/");
+			myRootRef.child('name').set(name);
+			myRootRef.child('street_address').set(street_address);
+			myRootRef.child('zip').set(zip);
+			myRootRef.child('state').set(state);
+			myRootRef.child('phone').set(phone);
+		
+			alert ("Information recorded.");
+		
+		}
+		</script>
+	
+	<meta charset="utf-8">
+ 
+  <title>Form Entry</title>
+  <meta name="description" content="Form Entry">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/styles.css">
+
+ 
+    <style>
+        body {
+            font-family: "HelveticaNeue-Light", sans-serif;
+            font-weight:300;
+        }
+        h2 {
+            font-size:16px;
+            text-transform:uppercase;
+        }
+        a {
+            text-decoration:none;
+        }
+        .hidden {
+            display:none;
+        }
+        #main {
+            text-align:center;
+        }
+        input {
+            padding: 10px;
+            border-radius: 3px;
+            border:1px solid #ccc;
+            box-shadow: inset 0 0 10px #eee;
+            font-size:24px;
+        }
+ 
+        #input-wrapper {
+            padding-bottom:15px;
+        }
+ 
+        #list-item-submit {
+            background: #73D175;
+            color: white;
+            box-shadow:none;
+            border-color: #599E5A;
+        }
+ 
+        li {
+            text-align:left;
+            font-family:sans-serif;
+            list-style: none;
+            padding: 10px 0;
+            border-bottom:1px solid #ccc;
+            margin-left:-10px;      
+        }
+        li input {
+            margin-right:15px;
+        }
+    </style>
+</head>
+ 
+<body>
+  <h1>Entry Form</h1>
+  <div id="main">
+        <div id="input-wrapper">
+            <input type="text" id="name" placeholder="Name">
+        </div>
+        <div id="input-wrapper">
+            <input type="text" id="street_address" placeholder="Street Address">
+        </div>
+        <div id="input-wrapper">
+            <input type="text" id="zip" placeholder="Zip Code">
+        </div>
+        <div id="input-wrapper">
+            <input type="text" id="state" placeholder="State">
+        </div>
+        <div id="input-wrapper">
+            <input type="text" id="phone" placeholder="Phone Number">
+        </div>
+        <div id="input-wrapper">
+            <button onclick = "b()">Submit</button>
+        </div>
+  </div>
+
+</body>
+ 
+</html>
