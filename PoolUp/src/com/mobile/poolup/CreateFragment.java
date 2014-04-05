@@ -21,8 +21,6 @@ import android.widget.Toast;
 public class CreateFragment extends Fragment implements OnClickListener {
 	
 	String useremail;
-	EditText toEmail,Subject,Message;
-	Button sendButton;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -35,12 +33,7 @@ public class CreateFragment extends Fragment implements OnClickListener {
             Bundle savedInstanceState) {
  
         View rootView = inflater.inflate(R.layout.fragment_create, container, false); 
-        toEmail = (EditText)rootView.findViewById(R.id.etToEmail);
-        Subject = (EditText)rootView.findViewById(R.id.etSubject);
-        Message = (EditText)rootView.findViewById(R.id.etMessageBody);
-        
-        sendButton = (Button)rootView.findViewById(R.id.bSendEmail);
-        sendButton.setOnClickListener(this);
+       
         
         return rootView;
     }
@@ -70,15 +63,8 @@ public class CreateFragment extends Fragment implements OnClickListener {
 @Override
 public void onClick(View v) {
 	switch(v.getId()){
-	case R.id.bSendEmail:
-		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-		StrictMode.setThreadPolicy(policy);
-		SendGrid sendGrid = new SendGrid("anishk25", "25ANUfeb");
-		sendGrid.addTo(toEmail.getText().toString());		
-		sendGrid.setFrom(useremail);
-		sendGrid.setSubject(Subject.getText().toString());
-		sendGrid.setText(Message.getText().toString());
-		sendGrid.send();
+	
+		
 
 	}
 	
