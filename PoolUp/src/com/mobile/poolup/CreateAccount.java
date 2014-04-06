@@ -1,5 +1,8 @@
 package com.mobile.poolup;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import com.firebase.client.Firebase;
 import com.firebase.simplelogin.SimpleLogin;
 import com.firebase.simplelogin.SimpleLoginAuthenticatedHandler;
@@ -75,7 +78,13 @@ public class CreateAccount extends Activity implements OnClickListener {
 									duration);
 							toast.show();							
 						} else {
-							users.child(parseEmail(email)).child("Name").setValue(name);
+							String username = parseEmail(email);
+							users.child(username).child("Name").setValue(name);
+							
+							Map<String, Object> tripSet = new HashMap<String, Object>();
+							users.child(username).child("MyTrips").setValue(tripSet);
+							
+							
 							Intent returnIntent = new Intent();
 							setResult(RESULT_OK, returnIntent);
 							finish();

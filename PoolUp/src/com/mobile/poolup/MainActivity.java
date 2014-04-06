@@ -30,7 +30,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		
 		mainref = new Firebase("https://sizzling-fire-7279.firebaseio.com/");
 		users = mainref.child("users");
-		checkIfLoggedIn();
+		//checkIfLoggedIn();
 		
 		
 		setContentView(R.layout.activity_main);		

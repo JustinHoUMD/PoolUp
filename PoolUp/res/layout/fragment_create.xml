@@ -1,66 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+  <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="#fa6a6a" 
     >
-<RelativeLayout 
+<LinearLayout   
+    
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     >
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/etTripName"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editText3"
-        android:layout_alignParentTop="true"
+        android:layout_height="wrap_content"        
         android:layout_marginTop="18dp"
         android:hint="Trip Name"
-        android:ems="10" >
-		
-        <requestFocus />
-    </EditText>
+        android:ems="10" />		
+    
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/etDateOfTrip"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editText2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
+        android:layout_height="wrap_content"        
         android:ems="10"
         android:hint="Date of Trip"
         android:inputType="date" />
+    
+        <EditText
+        android:id="@+id/etDestination"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"       
+        android:ems="10"
+        android:hint="Destination"
+        android:inputType="textPostalAddress" />    
 
     <TimePicker
-        android:id="@+id/timePicker1"
+        android:id="@+id/tpPicker"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editText3"
-        android:layout_below="@+id/editText3"
-        android:layout_marginTop="24dp" />
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="34dp" />
 
-    <EditText
-        android:id="@+id/editText1"
+     <EditText
+        android:id="@+id/etEmailAddresses"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/timePicker1"
-        android:layout_below="@+id/timePicker1"
-        android:layout_marginTop="22dp"
+        android:layout_height="wrap_content"        
         android:ems="10"
         android:hint="Enter Email Addresses"
         android:inputType="textMultiLine" />
-
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editText1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="33dp"
-        android:text="Create" />
      
-</RelativeLayout>
+    <Button
+        android:id="@+id/bCreateTrip"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Create" />   
+   
+     
+</LinearLayout>
 </ScrollView>
