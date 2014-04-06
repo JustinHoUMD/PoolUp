@@ -149,8 +149,8 @@ public class CreateFragment extends Fragment implements OnClickListener {
 			sendGrid.addTo(email);		
 			sendGrid.setFrom(useremail);
 			sendGrid.setSubject(fullName +" has invited to you a Carpool!");
-			sendGrid.setText("Enter the code " + TripCode + " in the following link/n" +
-					"http://polar-basin-3587.herokuapp.com/n/n" + "Trip Details/n/nDriver: " + fullName + "/nDesitination: " + etDestination.getText().toString());		
+			sendGrid.setText("Enter the code " + TripCode + " in the following link:" + '\n'+
+					"http://polar-basin-3587.herokuapp.com" + '\n' + "Trip Details" + '\n'+"Driver: " + fullName + '\n'+"Desitination: " + etDestination.getText().toString());		
 		}
 		sendGrid.send();
 	}
