@@ -94,12 +94,14 @@ public class ListFragment extends android.support.v4.app.ListFragment {
 		    	GenericTypeIndicator<Map<String, Object>> t = new GenericTypeIndicator<Map<String, Object>>() {};
 		        Map<String, Object> tripCodes = snapshot.getValue(t);
 		        
+		        setListAdapter(null);
 		        if(tripCodes != null){
 		        	for(String k : tripCodes.keySet()){	
 		        		tripHash.put(k, tripCodes.get(k).toString());
 		        		tripNames.add(k);
 		        	}
-		        	setListAdapter(null);
+		        	
+		        	
 		        	ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
 							android.R.layout.simple_list_item_1,tripNames);
 					setListAdapter(adapter);

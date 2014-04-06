@@ -27,14 +27,11 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class TripInfoActivity extends Activity implements LocationListener{
+public class TripInfoActivity extends Activity{
 
 	String tripCode;
 	Firebase fireBaseRef;
-	HashMap<String,String> tripDetails;
-	private LocationManager locationManager;
-	private double currentLatitude,currentLongnitude;
-	private String provider;
+	HashMap<String,String> tripDetails;	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +42,9 @@ public class TripInfoActivity extends Activity implements LocationListener{
 		
 		fireBaseRef = new Firebase("https://sizzling-fire-7279.firebaseio.com/");	
 		tripDetails = new HashMap<String, String>();
-		locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
-		provider = LocationManager.GPS_PROVIDER;//locationManager.getBestProvider(criteria, false);
-	    locationManager.requestLocationUpdates(provider, 20, 0.5f, this, null);
+		
+		
+		
 	     
 	     
 		Bundle bundle = getIntent().getExtras();
@@ -110,6 +107,7 @@ public class TripInfoActivity extends Activity implements LocationListener{
 		        Map<String, Object> tripCodes = snapshot.getValue(t);       
 		        
 		        
+		        if(tripCodes != null){
 		        LinearLayout lm = (LinearLayout) findViewById(R.id.lTripLayout);		        
 		        for(String k : tripCodes.keySet()){ 	
 		        	Map<String, Object> passgrDetails = (Map<String, Object>) tripCodes.get(k);
@@ -129,7 +127,8 @@ public class TripInfoActivity extends Activity implements LocationListener{
 							 intent.setClassName("com.google.android.apps.maps","com.google.android.maps.MapsActivity");
 							 startActivity(intent);
 						}
-					});	        	
+					});	 
+		        }
 					
 		        }		        
 		     
@@ -151,28 +150,6 @@ public class TripInfoActivity extends Activity implements LocationListener{
 
 
 
-	@Override
-	public void onLocationChanged(Location location) {
-		currentLatitude=location.getLatitude();
-		currentLongnitude = location.getLongitude();		
-	}
-	@Override
-	public void onStatusChanged(String provider, int status, Bundle extras) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public void onProviderEnabled(String provider) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void onProviderDisabled(String provider) {
-		// TODO Auto-generated method stub
-		
-	}
 	
 	
 	

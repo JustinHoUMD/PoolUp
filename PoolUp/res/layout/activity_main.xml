@@ -38,7 +38,9 @@
         android:layout_marginTop="183dp"
         android:ems="10"
         android:hint="@string/Email"
-        android:inputType="textEmailAddress" />
+        android:inputType="textEmailAddress" 
+        android:textColor="#FFFFFF"
+        />
 
     <ImageView
         android:id="@+id/imageView1"
@@ -46,7 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/Poolup" />
+        android:src="@drawable/poolup" />
 
     <EditText
         android:id="@+id/passwordText"
@@ -57,6 +59,7 @@
         android:layout_marginTop="14dp"
         android:ems="10"
         android:hint="@string/Password"
+        android:textColor="#FFFFFF"
         android:inputType="textPassword" >
 
         <requestFocus />
