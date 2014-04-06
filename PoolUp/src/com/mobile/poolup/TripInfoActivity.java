@@ -10,9 +10,14 @@ import com.firebase.client.GenericTypeIndicator;
 import com.firebase.client.ValueEventListener;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TypedValue;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -31,22 +36,16 @@ public class TripInfoActivity extends Activity{
 		tripDetails = new HashMap<String, String>();
 		Bundle bundle = getIntent().getExtras();
 		tripCode = bundle.getString("TRIP_CODE");
-		Log.d("DEBUG", "Received code: " + tripCode);		
+		Log.d("DEBUG", "Received code: " + tripCode);			
 		getTripDetails();
-		getPassengers(); 
+		getPassengers(); 		
 		//displayDetails();
 		
 		
 		
 	}
 	
-	/*private void displayDetails(){
-		LinearLayout ll = new LinearLayout(this);
-		TextView tv = new TextView(this);
-		for(String key: tripDetails.keySet()){
-			tv.setText(tripDetails.get(key));
-			ll.addView(tv);
-		}*/
+
 		
 
 	
@@ -64,8 +63,15 @@ public class TripInfoActivity extends Activity{
 		        for(String k : tripCodes.keySet()){	
 		        	TextView tv = new TextView(getApplicationContext());
 		        	String s = tripCodes.get(k).toString();
-		        	tv.setText(k+ ":"+s);		        	
-					lm.addView(tv);
+		        	
+		        	if(!s.equals("Driver") && !s.equals("TripName")){
+		        		tv.setText(k+ ":"+s);
+		        		tv.setTextColor(Color.parseColor("#000000"));
+		        		tv.setTextSize(TypedValue.COMPLEX_UNIT_SP,14);
+		        		lm.addView(tv);
+		        	}
+		        	
+		        	
 		        }		        
 		     
 		    }
@@ -89,11 +95,25 @@ public class TripInfoActivity extends Activity{
 		        
 		        
 		        LinearLayout lm = (LinearLayout) findViewById(R.id.lTripLayout);
-		        for(String k : tripCodes.keySet()){	
-		        	TextView tv = new TextView(getApplicationContext());
-		        	String s = k.toString(); 
-		        	tv.setText(s);		        	
-					lm.addView(tv);
+		        for(String k : tripCodes.keySet()){ 	
+		        	Map<String, Object> passgrDetails = (Map<String, Object>) tripCodes.get(k);
+		        	
+		        	 		        	
+		        	LayoutParams lp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+		        	Button myButton = new Button(getApplicationContext());
+		        	myButton.setText(k);
+		        	lm.addView(myButton,lp);
+		        	
+		        	String address = passgrDetails.get("street_address").toString();
+		        	myButton.setOnClickListener(new OnClickListener() {						
+						@Override
+						public void onClick(View v) {
+							
+						}
+					});
+		        	
+		        	
+					
 		        }		        
 		     
 		    }
