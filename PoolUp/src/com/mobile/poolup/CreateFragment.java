@@ -104,7 +104,7 @@ public class CreateFragment extends Fragment implements OnClickListener {
 			tripDetails.put("TripName",etTripName.getText().toString());			
 			tripDetails.put("Time",time);
 			tripDetails.put("Destination",etDestination.getText().toString());
-			fireBaseRef.child("trips").child(tripCode).setValue(tripDetails);
+			fireBaseRef.child("trips").child(tripCode).child("TripDetails").setValue(tripDetails);
 			
 			Map<String,Object> updates = new HashMap<String,Object>();
 			updates.put(etTripName.getText().toString(), tripCode);

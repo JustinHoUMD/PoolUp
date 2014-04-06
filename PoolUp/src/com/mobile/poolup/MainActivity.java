@@ -111,7 +111,7 @@ public class MainActivity extends Activity implements OnClickListener {
 						}
 						else{
 							Log.d("DEBUG","Loggin In");
-							Intent intent = new Intent("android.intent.action.TRIPACTIVITY");
+							Intent intent = new Intent(getApplicationContext(),TripActivity.class);
 							startActivity(intent);
 						}
 
