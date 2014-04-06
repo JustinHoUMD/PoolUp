@@ -10,7 +10,13 @@ import com.firebase.client.GenericTypeIndicator;
 import com.firebase.client.ValueEventListener;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.TypedValue;
@@ -21,31 +27,40 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class TripInfoActivity extends Activity{
+public class TripInfoActivity extends Activity implements LocationListener{
 
 	String tripCode;
 	Firebase fireBaseRef;
 	HashMap<String,String> tripDetails;
+	private LocationManager locationManager;
+	private double currentLatitude,currentLongnitude;
+	private String provider;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_trip_info);
 		
+		
 		fireBaseRef = new Firebase("https://sizzling-fire-7279.firebaseio.com/");	
 		tripDetails = new HashMap<String, String>();
+		locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+		provider = LocationManager.GPS_PROVIDER;//locationManager.getBestProvider(criteria, false);
+	    locationManager.requestLocationUpdates(provider, 20, 0.5f, this, null);
+	     
+	     
 		Bundle bundle = getIntent().getExtras();
 		tripCode = bundle.getString("TRIP_CODE");
 		Log.d("DEBUG", "Received code: " + tripCode);			
 		getTripDetails();
 		getPassengers(); 		
-		//displayDetails();
-		
-		
 		
 	}
 	
-
+	
+	
+	
 		
 
 	
@@ -60,6 +75,7 @@ public class TripInfoActivity extends Activity{
 		        
 		        
 		        LinearLayout lm = (LinearLayout) findViewById(R.id.lTripLayout);
+		        
 		        for(String k : tripCodes.keySet()){	
 		        	TextView tv = new TextView(getApplicationContext());
 		        	String s = tripCodes.get(k).toString();
@@ -94,7 +110,7 @@ public class TripInfoActivity extends Activity{
 		        Map<String, Object> tripCodes = snapshot.getValue(t);       
 		        
 		        
-		        LinearLayout lm = (LinearLayout) findViewById(R.id.lTripLayout);
+		        LinearLayout lm = (LinearLayout) findViewById(R.id.lTripLayout);		        
 		        for(String k : tripCodes.keySet()){ 	
 		        	Map<String, Object> passgrDetails = (Map<String, Object>) tripCodes.get(k);
 		        	
@@ -104,15 +120,16 @@ public class TripInfoActivity extends Activity{
 		        	myButton.setText(k);
 		        	lm.addView(myButton,lp);
 		        	
-		        	String address = passgrDetails.get("street_address").toString();
+		        	final String address = passgrDetails.get("street_address").toString();
 		        	myButton.setOnClickListener(new OnClickListener() {						
 						@Override
 						public void onClick(View v) {
-							
+							Intent intent = new Intent(Intent.ACTION_VIEW,Uri.parse("http://maps.google.com/maps?" + "saddr="+ 
+										"My Location" + "&daddr="+address));
+							 intent.setClassName("com.google.android.apps.maps","com.google.android.maps.MapsActivity");
+							 startActivity(intent);
 						}
-					});
-		        	
-		        	
+					});	        	
 					
 		        }		        
 		     
@@ -125,6 +142,36 @@ public class TripInfoActivity extends Activity{
 
 		   
 		});
+	}
+
+
+
+
+
+
+
+
+	@Override
+	public void onLocationChanged(Location location) {
+		currentLatitude=location.getLatitude();
+		currentLongnitude = location.getLongitude();		
+	}
+	@Override
+	public void onStatusChanged(String provider, int status, Bundle extras) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void onProviderEnabled(String provider) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void onProviderDisabled(String provider) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	
