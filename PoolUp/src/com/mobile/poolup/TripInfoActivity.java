@@ -60,8 +60,8 @@ public class TripInfoActivity extends Activity{
 		        
 		        
 		        LinearLayout lm = (LinearLayout) findViewById(R.id.lTripLayout);
-				TextView tv = new TextView(getApplicationContext());
 		        for(String k : tripCodes.keySet()){	
+		        	TextView tv = new TextView(getApplicationContext());
 		        	String s = tripCodes.get(k).toString();
 		        	tv.setText(s);		        	
 					lm.addView(tv);
