@@ -50,6 +50,7 @@ public class CreateAccount extends Activity implements OnClickListener {
 		switch (v.getId()) {
 		case R.id.bCreateDone:
 			createAccount();
+			break;
 
 		}
 	}

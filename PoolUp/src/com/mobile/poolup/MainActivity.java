@@ -79,9 +79,12 @@ public class MainActivity extends Activity implements OnClickListener {
 		switch (v.getId()) {
 		case R.id.bLoginButton:
 			authenticateLogin();
+			break;
 		case R.id.bCreatAccount:
 			Intent intent = new Intent("android.intent.action.CREATEACCOUNT");
 			startActivityForResult(intent, 1);
+			startActivity(intent);
+			break;
 		
 		}
 
@@ -119,6 +122,7 @@ public class MainActivity extends Activity implements OnClickListener {
 				});
 	}
 
+	
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
